@@ -13,7 +13,7 @@ git clone https://github.com/pulpandfiber/vagrant-setup.git $fullpath
 
 mkdir -p $fullpath/htdocs
 
-read -p "Would you like to setup a new wordpress project? <y/N> " prompt
+read -p "Would you like to setup a new wordpress project (We will also setup the database)? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
 then
 cd $fullpath/htdocs
@@ -27,6 +27,22 @@ mv from_scratch_child ../
 mv grunt ../../../
 cd ../
 rm -rf fs
+
+mv $fullpath/htdocs/wp-config-sample.php $fullpath/htdocs/wp-config.php
+
+sed -i.bak "s/database_name_here/$project_name/g" $fullpath/htdocs/wp-config.php
+rm $fullpath/htdocs/wp-config.php.bak
+
+sed -i.bak "s/username_here/$project_name/g" $fullpath/htdocs/wp-config.php
+rm $fullpath/htdocs/wp-config.php.bak
+
+sed -i.bak "s/password_here/$project_name/g" $fullpath/htdocs/wp-config.php
+rm $fullpath/htdocs/wp-config.php.bak
+
+echo "Updated Vagrantfile to use chosen IP."
+
+echo "Updated wp-config.php with db info."
+
 else
   exit 0
 fi
