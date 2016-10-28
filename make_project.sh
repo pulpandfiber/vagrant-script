@@ -25,14 +25,14 @@ echo "Updated Vagrantfile to use chosen IP"
 echo "$ipaddy	local.$project_name.com phpmyadmin.$project_name.com" >> /private/etc/hosts
 echo "Updated hosts file with chosen IP mapped to local.$project_name.com, phpmyadmin.$project_name.com"
 
-mv $fullpath/sites-config/local.PROJECT_NAME.com.conf $fullpath/sites-config/local.$project_name.com.conf
-mv $fullpath/sites-config/phpmyadmin.PROJECT_NAME.com.conf $fullpath/sites-config/phpmyadmin.$project_name.com.conf
+mv $fullpath/vagrant-sites-config/local.PROJECT_NAME.com.conf $fullpath/vagrant-sites-config/local.$project_name.com.conf
+mv $fullpath/vagrant-sites-config/phpmyadmin.PROJECT_NAME.com.conf $fullpath/vagrant-sites-config/phpmyadmin.$project_name.com.conf
 
-sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/sites-config/local.$project_name.com.conf
-rm $fullpath/sites-config/local.$project_name.com.conf.bak
+sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/vagrant-sites-config/local.$project_name.com.conf
+rm $fullpath/vagrant-sites-config/local.$project_name.com.conf.bak
 
-sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/sites-config/phpmyadmin.$project_name.com.conf
-rm $fullpath/sites-config/phpmyadmin.$project_name.com.conf.bak
+sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/vagrant-sites-config/phpmyadmin.$project_name.com.conf
+rm $fullpath/vagrant-sites-config/phpmyadmin.$project_name.com.conf.bak
 
 sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/vagrant_vhosts.sh
 rm $fullpath/vagrant_vhosts.sh.bak
