@@ -6,6 +6,14 @@ fullpath=$HOME/Sites/$project_name
 
 mkdir -p $fullpath
 
+mkdir -p $fullpath/htdocs
+
+cd $fullpath
+
+wget --no-certificate-check https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.zip
+unzip ./phpMyAdmin-4.6.4-all-languages.zip
+mv phpMyAdmin-4.6.4-all-languages/ phpmyadmin/
+
 echo "A project has been created at: $fullpath"
 
 echo "Checking out vagrant setup into project..."
@@ -36,8 +44,6 @@ rm $fullpath/vagrant-sites-config/phpmyadmin.$project_name.com.conf.bak
 
 sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/vagrant-setup-script/vagrant_vhosts.sh
 rm $fullpath/vagrant-setup-script/vagrant_vhosts.sh.bak
-
-cd $fullpath
 
 vagrant up
 
