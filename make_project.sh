@@ -6,6 +6,11 @@ fullpath=$HOME/Sites/$project_name
 
 mkdir -p $fullpath
 
+echo "A project folder has been created at: $fullpath"
+
+echo "Checking out vagrant setup into project..."
+git clone https://github.com/pulpandfiber/vagrant-setup.git $fullpath
+
 mkdir -p $fullpath/htdocs
 
 cd $fullpath
@@ -13,11 +18,6 @@ cd $fullpath
 wget --no-certificate-check https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.zip
 unzip ./phpMyAdmin-4.6.4-all-languages.zip
 mv phpMyAdmin-4.6.4-all-languages/ phpmyadmin/
-
-echo "A project has been created at: $fullpath"
-
-echo "Checking out vagrant setup into project..."
-git clone https://github.com/pulpandfiber/vagrant-setup.git $fullpath
 
 echo "Let's configure our Vagrant file!"
 echo "Echoing out your hosts file for reference..."
