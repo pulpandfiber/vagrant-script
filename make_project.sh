@@ -34,8 +34,10 @@ rm $fullpath/vagrant-sites-config/local.$project_name.com.conf.bak
 sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/vagrant-sites-config/phpmyadmin.$project_name.com.conf
 rm $fullpath/vagrant-sites-config/phpmyadmin.$project_name.com.conf.bak
 
-sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/vagrant_vhosts.sh
-rm $fullpath/vagrant_vhosts.sh.bak
+sed -i.bak "s/PROJECT_NAME/$project_name/g" $fullpath/vagrant-setup-script/vagrant_vhosts.sh
+rm $fullpath/vagrant-setup-script/vagrant_vhosts.sh.bak
+
+cd $fullpath
 
 vagrant up
 
