@@ -1,6 +1,8 @@
 #! /bin/bash
 
-read -p "Project name (Will be created under: ~/Sites ): " project_name
+read -p "Project name (Will be created under: ~/Sites ): " project_name_initial
+
+project_name=${project_name_initial,,}
 
 fullpath=$HOME/Sites/$project_name
 
