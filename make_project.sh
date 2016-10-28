@@ -13,11 +13,30 @@ git clone https://github.com/pulpandfiber/vagrant-setup.git $fullpath
 
 mkdir -p $fullpath/htdocs
 
+read -p "Would you like to setup a new wordpress project? <y/N> " prompt
+if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+then
+cd $fullpath/htdocs
+wp core download
+cd $fullpath/htdocs/wp-content/themes
+mkdir -p $fullpath/htdocs/wp-content/themes/fs
+cd $fullpath/htdocs/wp-content/themes/fs
+git clone https://github.com/pulpandfiber/wp-theme-from-scratch.git .
+mv from_scratch ../
+mv from_scratch_child ../
+mv grunt ../../../
+cd ../
+rm -rf fs
+else
+  exit 0
+fi
+
 cd $fullpath
 
 wget --no-check-certificate https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.zip
 unzip ./phpMyAdmin-4.6.4-all-languages.zip
 mv phpMyAdmin-4.6.4-all-languages/ phpmyadmin/
+rm phpMyAdmin-4.6.4-all-languages.zip
 
 echo "Let's configure our Vagrant file!"
 echo "Echoing out your hosts file for reference..."
