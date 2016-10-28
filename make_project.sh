@@ -8,8 +8,8 @@ mkdir -p $fullpath
 
 echo "A project has been created at: $fullpath"
 
-echo "Checking out vagrant file (Scotchbox) into project..."
-git clone https://github.com/scotch-io/scotch-box.git $fullpath
+echo "Checking out vagrant setup into project..."
+git clone https://github.com/pulpandfiber/vagrant-setup.git $fullpath
 
 echo "Let's configure our Vagrant file!"
 echo "Echoing out your hosts file for reference..."
