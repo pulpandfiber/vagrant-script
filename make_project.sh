@@ -15,7 +15,7 @@ mkdir -p $fullpath/htdocs
 
 cd $fullpath
 
-wget --no-certificate-check https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.zip
+wget --no-check-certificate https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.zip
 unzip ./phpMyAdmin-4.6.4-all-languages.zip
 mv phpMyAdmin-4.6.4-all-languages/ phpmyadmin/
 
