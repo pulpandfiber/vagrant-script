@@ -1,8 +1,8 @@
 #! /bin/bash
 
-read -p "Project name (Will be created under: ~/Sites ): " project_name
+read -p "Project name (Will be created under: ~/Sites ): " project_name_temp
 
-project_name=${project_name,,}
+project_name="$(echo $project_name_temp | tr '[A-Z]' '[a-z]')"
 
 fullpath=$HOME/Sites/$project_name
 
@@ -17,13 +17,15 @@ mkdir -p $fullpath/htdocs
 
 read -p "Would you like to setup a new wordpress project (We will also setup the database)? <y/N> " prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+
 then
+
 cd $fullpath/htdocs
 wp core download
 cd $fullpath/htdocs/wp-content/themes
 mkdir -p $fullpath/htdocs/wp-content/themes/fs
 cd $fullpath/htdocs/wp-content/themes/fs
-git clone https://github.com/pulpandfiber/wp-theme-from-scratch.git .
+git clone https://devpf:pulp0030@github.com/pulpandfiber/wp-theme-from-scratch.git .
 mv from_scratch ../
 mv from_scratch_child ../
 mv grunt ../../../
@@ -51,8 +53,8 @@ fi
 
 cd $fullpath
 
-wget --no-check-certificate https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.zip
-unzip ./phpMyAdmin-4.6.4-all-languages.zip
+wget -q --no-check-certificate https://files.phpmyadmin.net/phpMyAdmin/4.6.4/phpMyAdmin-4.6.4-all-languages.zip
+unzip -qq ./phpMyAdmin-4.6.4-all-languages.zip 2>&1
 mv phpMyAdmin-4.6.4-all-languages/ phpmyadmin/
 rm phpMyAdmin-4.6.4-all-languages.zip
 
@@ -67,7 +69,7 @@ sed -i.bak "s/192.168.33.10/$ipaddy/g" $fullpath/Vagrantfile
 rm $fullpath/Vagrantfile.bak
 echo "Updated Vagrantfile to use chosen IP"
 
-echo "$ipaddy	local.$project_name.com phpmyadmin.$project_name.com" >> /private/etc/hosts
+sudo echo "$ipaddy	local.$project_name.com phpmyadmin.$project_name.com" >> /private/etc/hosts
 echo "Updated hosts file with chosen IP mapped to local.$project_name.com, phpmyadmin.$project_name.com"
 
 mv $fullpath/vagrant-sites-config/local.PROJECT_NAME.com.conf $fullpath/vagrant-sites-config/local.$project_name.com.conf
