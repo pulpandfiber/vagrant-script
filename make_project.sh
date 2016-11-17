@@ -65,7 +65,7 @@ case $wp in
     rm $fullpath/Vagrantfile.bak
     echo "Updated Vagrantfile to use chosen IP"
 
-    sudo echo "$ipaddy  local.$project_name.com phpmyadmin.$project_name.com" >> /private/etc/hosts
+    sudo echo "$ipaddy  local.$project_name.com phpmyadmin.$project_name.com" | sudo tee -a /private/etc/hosts
     echo "Updated hosts file with chosen IP mapped to local.$project_name.com, phpmyadmin.$project_name.com"
 
     mv $fullpath/vagrant-sites-config/local.PROJECT_NAME.com.conf $fullpath/vagrant-sites-config/local.$project_name.com.conf
