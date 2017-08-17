@@ -34,6 +34,7 @@ case $wp in
     #cd ../
     #rm -rf fs
     git clone https://github.com/olefredrik/FoundationPress.git
+    mv FoundationPress $project_name
 
     mv $fullpath/htdocs/wp-config-sample.php $fullpath/htdocs/wp-config.php
 
