@@ -25,14 +25,15 @@ case $wp in
     cd $fullpath/htdocs
     wp core download
     cd $fullpath/htdocs/wp-content/themes
-    mkdir -p $fullpath/htdocs/wp-content/themes/fs
-    cd $fullpath/htdocs/wp-content/themes/fs
-    git clone https://devpf:pulp0030@github.com/pulpandfiber/wp-theme-from-scratch.git .
-    mv from_scratch ../
-    mv from_scratch_child ../
-    mv grunt ../../../
-    cd ../
-    rm -rf fs
+    #mkdir -p $fullpath/htdocs/wp-content/themes/fs
+    #cd $fullpath/htdocs/wp-content/themes/fs
+    #git clone https://devpf:pulp0030@github.com/pulpandfiber/wp-theme-from-scratch.git .
+    #mv from_scratch ../
+    #mv from_scratch_child ../
+    #mv grunt ../../../
+    #cd ../
+    #rm -rf fs
+    git clone https://github.com/olefredrik/FoundationPress.git
 
     mv $fullpath/htdocs/wp-config-sample.php $fullpath/htdocs/wp-config.php
 
